@@ -8,5 +8,12 @@
  */
 class Posts
 {
-
+    public function __construct()
+    {
+        echo "Создался обьект\n" . __CLASS__."\n";
+    }
+    public function indexAction()
+    {
+        echo __CLASS__ ." ". __FUNCTION__;
+    }
 }

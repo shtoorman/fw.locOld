@@ -8,5 +8,10 @@
  */
 class Main
 {
+    public function __construct()
+    {
+        echo "Создался обьект\n" . __CLASS__."\n";
+    }
 
+    public function indexAction(){}
 }

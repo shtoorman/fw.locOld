@@ -6,7 +6,7 @@
  * Time: 15:04
  */
 
-function debug($arr)
+function debug($arr, $str = "")
 {
-    echo '<pre>' . print_r($arr, true) . '<pre>';
+    echo '<pre>' . $str . print_r($arr, true) . '<pre>';
 }
