@@ -1,5 +1,6 @@
 <?php
 
+namespace vendor\core;
 /**
  * Created by PhpStorm.
  * User: Shtoo

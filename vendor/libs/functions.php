@@ -8,5 +8,5 @@
 
 function debug($arr, $str = "")
 {
-    echo '<pre>' . $str . print_r($arr, true) . '<pre>';
+    echo '<pre>' . $str . " => " . print_r($arr, true) . '<pre>';
 }

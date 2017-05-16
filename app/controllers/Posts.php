@@ -16,4 +16,9 @@ class Posts
     {
         echo __CLASS__ ." ". __FUNCTION__;
     }
+
+    public function testAction()
+    {
+        echo __CLASS__ ." ". __FUNCTION__;
+    }
 }
