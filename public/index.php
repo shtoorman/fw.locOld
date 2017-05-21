@@ -1,6 +1,5 @@
 <?php
 error_reporting(-1);//контроль ошибок
-echo  $test;
 /**
  * Created by PhpStorm.
  * User: Shtoo
@@ -13,38 +12,30 @@ $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
 use vendor\core\Router;
 
+
+require '../vendor/libs/functions.php';
+
 define('WWW', __DIR__);        //WWW => D:\WAMP\OpenServer\domains\fw.locOld\public
 define('CORE', dirname(__DIR__) . '\\vendor\\core');   //CORE => D:\WAMP\OpenServer\domains\fw.locOld\vendor\core
 define('ROOT', dirname(__DIR__));  //ROOT => D:\WAMP\OpenServer\domains\fw.locOld
 define('APP', dirname(__DIR__) . '\\app');  //APP => D:\WAMP\OpenServer\domains\fw.locOld\app
-
-
-//require '../vendor/core/Router.php';
-require '../vendor/libs/functions.php';
-//require '../app/controllers/Posts.php';
-//require '../app/controllers/Main.php';
-//require '../app/controllers/PostsNew.php';
-debug(WWW, 'WWW');
-debug(CORE, 'CORE');
-debug(ROOT, 'ROOT');
-debug(APP, 'APP');
+define('LAYOUT','default');// дефолтный шаблон
 
 spl_autoload_register(function ($class) {
-    //debug($class,(string)$class);//
-    echo $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
+    $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
     if (is_file($file)) {
         require_once "$file";
     }
 });
 
 
-Router::add('^pages/?(?P<action>[a-z-]+)?$', ['controller' => 'Posts', 'action' => 'index']);
+Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
+Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);
 
 
 //default routs
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);//'^$' - рег пустой строки
 Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');//?P<> именованый ключ
 
-debug(Router::getRouters(), 'getRouters');
 Router::dispatch($query);
 
