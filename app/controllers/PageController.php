@@ -11,7 +11,7 @@ namespace app\controllers;
 
 
 
-class Page extends App
+class PageController extends AppController
 {
     public function viewAction()//23:15
     {

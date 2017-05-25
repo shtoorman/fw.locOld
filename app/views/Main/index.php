@@ -1,1 +1,6 @@
-TEST
+<code><?=__FILE__?></code>
+<br>
+<?=$hi?>
+<br>
+<?=$name?>
+<?=debug($colors)?>

@@ -9,7 +9,7 @@ namespace app\controllers;
  * Date: 14.05.2017
  * Time: 15:36
  */
-class Posts extends App
+class PostsController extends AppController
 {
 
     public function indexAction()

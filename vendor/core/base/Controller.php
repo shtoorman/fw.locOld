@@ -19,24 +19,31 @@ abstract class Controller
      * текущий маршрут и параметры (controller, action, params)
      * @var array
      */
-    private $route = [];
+    public $route = [];
 
     /**
      *  вид
      * @var
      */
-    private $view;
+    public $view;
 
     /**
      * текущий шаблон
      * @var string
      */
-    private $layout;
+    public $layout = "";
+
+    /**
+     * Пользовательские данные
+     * @var array
+     */
+    public $vars = [];
 
     public function __construct($route)
     {
         $this->route = $route;
         $this->view = $route['action'];
+
 //        include APP. "/views/{$route['controller']}/{$this->view}.php";
 //        echo "Создался обьект\n" . __CLASS__ . "\n";
     }
@@ -47,7 +54,12 @@ abstract class Controller
      */
     public function getView()
     {
-        $vObj = new View($this->route,  $this->layout , $this->view);
-        $vObj->render();
+        $vObj = new View($this->route, $this->layout, $this->view);
+        $vObj->render($this->vars);
+    }
+
+    public function set($vars)
+    {
+        $this->vars = $vars;
     }
 }

@@ -9,7 +9,7 @@ namespace app\controllers;
  * Date: 14.05.2017
  * Time: 15:47
  */
-class PostsNew extends App
+class PostsNewController extends AppController
 {
 //    public function __construct()
 //    {
