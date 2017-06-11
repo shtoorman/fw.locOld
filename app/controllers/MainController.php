@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Main;
+
 
 /**
  * Created by PhpStorm.
@@ -16,16 +18,27 @@ class MainController extends AppController
 
     public function indexAction()
     {
-         $this->layout = 'default';
-        //$this->view = 'test';
-        $name = 'Sasha';
-        $hi = 'Hello';
-        $title = 'default layout';
-        $colors = [
-            'white' => 'белый',
-            'black' => 'черный'
-        ];
-        $this->set(compact('name', 'hi', 'colors', 'title'));//compact — Создает массив, содержащий названия переменных и их значения
+        $model = new Main;
+        $res = $model->query("SELECT * FROM fw.products" );
+        var_dump($res);
+        $title = 'PAGE TITLE';
+        $this->set(compact('title'));//28:48
+
+
+
+
+
+
+
+
+//         $this->layout = 'default';
+//        //$this->view = 'test';
+//        $title = 'default layout';
+//        $colors = [
+//            'white' => 'белый',
+//            'black' => 'черный'
+//        ];
+//        $this->set(compact('name', 'hi', 'colors', 'title'));//compact — Создает массив, содержащий названия переменных и их значения
     }
 
 
