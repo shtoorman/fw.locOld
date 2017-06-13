@@ -7,7 +7,7 @@
  */
 
 return [
-    'dsn' => 'mysql:host = localhost; dbname = fw; charset = utf8',
+    'dsn' => 'mysql:host=localhost; dbname=bookshop; charset=utf8',
     'user' => 'root',
     'password' => '',
     'opt' => [

@@ -19,16 +19,15 @@ class MainController extends AppController
     public function indexAction()
     {
         $model = new Main;
-        $res = $model->query("SELECT * FROM fw.products" );
-        var_dump($res);
+//        $res = $model->query("CREATE TABLE users( id_user int(10) AUTO_INCREMENT,
+//                              name VARCHAR (20) NOT NULL ,
+//                              PRIMARY KEY  (id_user))");
+        $catalog = $model->findAll();
+
+
+
         $title = 'PAGE TITLE';
-        $this->set(compact('title'));//28:48
-
-
-
-
-
-
+        $this->set(compact('title','catalog'));//28:48
 
 
 //         $this->layout = 'default';

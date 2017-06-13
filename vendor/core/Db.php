@@ -19,6 +19,12 @@ class Db
 
     protected static $instance;
 
+    public static $countSql = 0;//Количество выполненных запросов
+
+    public static $queries = [];//Все запросы
+
+
+
     protected function __construct()
     {
         $db = require ROOT . '/config/config_db.php';
@@ -43,11 +49,11 @@ class Db
      * @return \PDOStatement//28;43
      */
     public function execute($sql){
-        echo 'Error occurred:'.implode(":",$this->pdo->errorInfo());
-        print_r($this->pdo->errorInfo());
+        self::$countSql++;
+        self::$queries[] = $sql;
+        //echo 'Error occurred:'.implode(":",$this->pdo->errorInfo());
+        //print_r($this->pdo->errorInfo());
         $stmt = $this->pdo->prepare($sql);
-        print_r($this->pdo->errorInfo());
-        echo 'Error occurred:'.implode(":",$this->pdo->errorInfo());
          return $stmt->execute();
     }
 
@@ -56,8 +62,10 @@ class Db
      * @return array
      */
     public function query($sql){
+        self::$countSql++;
+        self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);//готовим sql запрос
-        $res = $stmt-$this->execute();
+        $res = $stmt->execute();
         if ($res !== false){
             return $stmt->fetchAll();
         }

@@ -35,7 +35,7 @@ abstract class Model
      */
     public function findAll()
     {
-        $sql = "SELECT FROM fw.{$this->table}";
+        $sql = "SELECT * FROM  {$this->table}";
         return $this->pdo->query($sql);
     }
 }
