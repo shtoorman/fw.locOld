@@ -14,19 +14,19 @@ use app\models\Main;
 class MainController extends AppController
 {
 
-    public $layout = 'main';
+    //public $layout = 'main';
 
     public function indexAction()
     {
         $model = new Main;
-//        $res = $model->query("CREATE TABLE users( id_user int(10) AUTO_INCREMENT,
-//                              name VARCHAR (20) NOT NULL ,
-//                              PRIMARY KEY  (id_user))");
+
         $catalog = $model->findAll();
+        $catalog1 = $model->findOne(1);
+        $catalog3 = $model->findBySql("SELECT * FROM {$model->table} ORDER BY id DESC");
+       // debug($catalog1);
 
 
-
-        $title = 'PAGE TITLE';
+        $title = 'книг';
         $this->set(compact('title','catalog'));//28:48
 
 

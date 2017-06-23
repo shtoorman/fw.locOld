@@ -24,7 +24,6 @@ class Db
     public static $queries = [];//Все запросы
 
 
-
     protected function __construct()
     {
         $db = require ROOT . '/config/config_db.php';
@@ -36,37 +35,41 @@ class Db
      *
      * @return Db
      */
-    public static function instance(){
-        if(self::$instance === null){
+    public static function instance()
+    {
+        if (self::$instance === null) {
             self::$instance = new self;
         }
         return self::$instance;
     }
 
     /**
-     *
      * @param $sql
-     * @return \PDOStatement//28;43
+     * @param array $params
+     * @return bool
      */
-    public function execute($sql){
+    public function execute($sql, $params =[])
+    {
         self::$countSql++;
         self::$queries[] = $sql;
         //echo 'Error occurred:'.implode(":",$this->pdo->errorInfo());
         //print_r($this->pdo->errorInfo());
         $stmt = $this->pdo->prepare($sql);
-         return $stmt->execute();
+        return $stmt->execute($params);
     }
 
     /**
      * @param $sql
+     * @param array $params
      * @return array
      */
-    public function query($sql){
+    public function query($sql, $params = [])
+    {
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);//готовим sql запрос
-        $res = $stmt->execute();
-        if ($res !== false){
+        $res = $stmt->execute($params);
+        if ($res !== false) {
             return $stmt->fetchAll();
         }
         return [];

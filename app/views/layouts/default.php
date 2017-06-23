@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Интернет магазин <?=$title?></title>
+    <link rel="shortcut icon" href="images/instrument.jpg">
 
 
     <link href="/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +18,7 @@
     <![endif]-->
 </head>
 <body>
-<h1>Hello, world!</h1>
+<h1>Добро пожаловать!</h1>
 
 
 
